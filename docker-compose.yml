@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  oidc_client:
+    build: ./oidc-client
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  oidc_provider:
+    build: ./oidc-provider
+    ports:
+      - "4000:4000"
+    networks:
+      - app-network
+
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
